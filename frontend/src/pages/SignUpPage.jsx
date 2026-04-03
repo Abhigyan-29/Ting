@@ -11,7 +11,19 @@ function SignUpPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    signup(formData);
+    if (
+  !formData.fullName ||
+  !formData.username ||
+  !formData.email ||
+  !formData.password
+) {
+  return toast.error("All fields are required");
+}
+    signup({
+  fullName: formData.fullName,
+  email: formData.email,
+  password: formData.password,
+});
   };
 
   return (
